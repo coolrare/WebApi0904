@@ -24,6 +24,7 @@ namespace WebApi0904
             config.Filters.Add(new HostAuthenticationFilter(OAuthDefaults.AuthenticationType));
 
             //config.Filters.Add(new CheckModelStateAttribute());
+            config.Filters.Add(new HandleMyErrorAttribute());
 
             // Web API 路由
             config.MapHttpAttributeRoutes();

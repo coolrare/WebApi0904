@@ -209,7 +209,9 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CheckModelStateAttribute.cs" />
     <Compile Include="Controllers\ClientsController.cs" />
+    <Compile Include="Controllers\HandleMyErrorAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\MyError.cs" />
     <Compile Include="Models\ProductPatchVM.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
