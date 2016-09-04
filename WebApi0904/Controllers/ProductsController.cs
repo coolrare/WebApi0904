@@ -77,13 +77,9 @@ namespace WebApi0904.Controllers
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
+        [CheckModelState]
         public IHttpActionResult PatchProduct(int id, [FromUri]ProductPatchVM product)
         {
-            if (!ModelState.IsValid)
-            {
-                return BadRequest(ModelState);
-            }
-
             var item = db.Product.Find(id);
 
             if (item == null)
