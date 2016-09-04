@@ -45,6 +45,7 @@ namespace WebApi0904.Controllers
         // GET: api/Clients/5
         [ResponseType(typeof(Client))]
         [Route("clients/{id}/orders")]
+        [Route("ClientOrders/{id}")]
         public IHttpActionResult GetClientOrders(int id)
         {
             var orders = db.Order.Where(p => p.ClientId == id);
