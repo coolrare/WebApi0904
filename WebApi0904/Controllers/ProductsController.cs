@@ -77,7 +77,7 @@ namespace WebApi0904.Controllers
 
         // PUT: api/Products/5
         [ResponseType(typeof(void))]
-        public IHttpActionResult PatchProduct(int id, ProductPatchVM product)
+        public IHttpActionResult PatchProduct(int id, [FromUri]ProductPatchVM product)
         {
             if (!ModelState.IsValid)
             {
@@ -101,7 +101,7 @@ namespace WebApi0904.Controllers
             }
             db.SaveChanges();
 
-            return StatusCode(HttpStatusCode.NoContent);
+            return Ok(item);
         }
 
         // POST: api/Products
