@@ -23,10 +23,34 @@ namespace WebApi0904.Controllers
         }
 
         // GET: api/Clients
-        [Route("")]
-        public IHttpActionResult GetClient()
+        [Route("get1")]
+        public IQueryable<Client> GetClient1()
         {
-            return Ok(db.Client);
+            return db.Client.Take(10);
+        }
+
+        [Route("get2")]
+        public IHttpActionResult GetClient2()
+        {
+            return Ok(db.Client.Take(10));
+        }
+
+        [Route("get3")]
+        public HttpResponseMessage GetClient3()
+        {
+            return new HttpResponseMessage()
+            {
+                StatusCode = HttpStatusCode.OK,
+                Content = new ObjectContent<IQueryable<Client>>(db.Client.Take(10),
+                    GlobalConfiguration.Configuration.Formatters.JsonFormatter),
+                ReasonPhrase = "VERY_OK"
+            };
+        }
+
+        [Route("get4")]
+        public HttpResponseMessage GetClient4()
+        {
+            return Request.CreateResponse(HttpStatusCode.OK, db.Client.Take(10));
         }
 
         // GET: api/Clients/5
