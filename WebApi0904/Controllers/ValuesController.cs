@@ -7,7 +7,7 @@ using System.Web.Http;
 
 namespace WebApi0904.Controllers
 {
-    //[Authorize]
+    [Authorize(Users = "admin,will")]
     public class ValuesController : ApiController
     {
         [Route("jsm")]

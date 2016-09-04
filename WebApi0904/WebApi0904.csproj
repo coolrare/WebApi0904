@@ -211,6 +211,8 @@
     <Compile Include="Controllers\ClientsController.cs" />
     <Compile Include="Controllers\HandleMyErrorAttribute.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\LoginVM.cs" />
     <Compile Include="Controllers\MyError.cs" />
     <Compile Include="Models\ProductPatchVM.cs" />
     <Compile Include="Controllers\ProductsController.cs" />
