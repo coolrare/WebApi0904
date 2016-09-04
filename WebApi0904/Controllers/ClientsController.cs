@@ -24,9 +24,9 @@ namespace WebApi0904.Controllers
 
         // GET: api/Clients
         [Route("")]
-        public IQueryable<Client> GetClient()
+        public IHttpActionResult GetClient()
         {
-            return db.Client;
+            return Ok(db.Client);
         }
 
         // GET: api/Clients/5
