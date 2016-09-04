@@ -53,6 +53,33 @@ namespace WebApi0904.Controllers
             return Ok(orders);
         }
 
+        // GET: api/Clients/5
+        [ResponseType(typeof(Client))]
+        [Route("clients/{id}/orders/{*date}")]
+        public IHttpActionResult GetClientOrders(int id, DateTime date)
+        {
+            var orders = db.Order
+                .Where(p => p.ClientId == id
+                    && p.OrderDate.Value.Year == date.Year
+                    && p.OrderDate.Value.Month == date.Month
+                    && p.OrderDate.Value.Day == date.Day);
+
+            return Ok(orders);
+        }
+
+        [ResponseType(typeof(Client))]
+        [Route("clients/{id}/orders/pending")]
+        public IHttpActionResult GetClientOrdersPending(int id)
+        {
+            var orders = db.Order
+                .Where(p => p.ClientId == id
+                    && p.OrderStatus == "P");
+
+            return Ok(orders);
+        }
+
+
+
         // PUT: api/Clients/5
         [ResponseType(typeof(void))]
         public IHttpActionResult PutClient(int id, Client client)
