@@ -13,6 +13,11 @@ namespace WebApi0904
     {
         public static void Register(HttpConfiguration config)
         {
+            var json = GlobalConfiguration.Configuration.Formatters.JsonFormatter;
+
+            json.SerializerSettings.Formatting = Newtonsoft.Json.Formatting.Indented;
+            json.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+
             // Web API 設定和服務
             // 將 Web API 設定成僅使用 bearer 權杖驗證。
             config.SuppressDefaultHostAuthentication();
