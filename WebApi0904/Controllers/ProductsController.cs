@@ -75,6 +75,35 @@ namespace WebApi0904.Controllers
             return StatusCode(HttpStatusCode.NoContent);
         }
 
+        // PUT: api/Products/5
+        [ResponseType(typeof(void))]
+        public IHttpActionResult PatchProduct(int id, ProductPatchVM product)
+        {
+            if (!ModelState.IsValid)
+            {
+                return BadRequest(ModelState);
+            }
+
+            var item = db.Product.Find(id);
+
+            if (item == null)
+            {
+                return NotFound();
+            }
+
+            if (product.Price.HasValue)
+            {
+                item.Price = product.Price.Value;
+            }
+            if (product.Stock.HasValue)
+            {
+                item.Stock = product.Stock.Value;
+            }
+            db.SaveChanges();
+
+            return StatusCode(HttpStatusCode.NoContent);
+        }
+
         // POST: api/Products
         [ResponseType(typeof(Product))]
         public IHttpActionResult PostProduct(Product product)
